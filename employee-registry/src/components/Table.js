@@ -3,14 +3,27 @@ import employees from '../employees.json';
 
 class Table extends Component {
     state = {
-        employees    
+        employees: employees,
+        sortColumn: '',
+        sortColumnId: '',
     };
 
     sortEmployees = (event) => {
         const dataType = event.target.getAttribute('data-type');
         const sortType = event.target.getAttribute('sort');
 
+
+        if (this.state.sortColumnId !== '') {
+            document.getElementById('sort-id').remove();
+        }
+
+
         if (sortType === 'asc') {
+            const icon = document.createElement("i");
+            document.getElementById(event.target.id).appendChild(icon);
+            icon.classList.add("fas", "fa-long-arrow-alt-up", "pl-2");
+            icon.setAttribute('id', 'sort-id');
+
             const sortedArr = employees.sort(function(a, b){
                 var x = a[dataType];
                 var y = b[dataType];
@@ -18,9 +31,18 @@ class Table extends Component {
                 if (x > y) {return 1;}
                 return 0;
               });
-          this.setState({sortedArr});
+              this.setState({
+                  employees: sortedArr,
+                  sortColumn: dataType,
+                  sortColumnId: event.target.id
+                });
           event.target.setAttribute('sort', 'desc');
         } else {
+            const icon = document.createElement("i");
+            document.getElementById(event.target.id).appendChild(icon);
+            icon.classList.add("fas", "fa-long-arrow-alt-down", "pl-2");
+            icon.setAttribute('id', 'sort-id');
+
             const sortedArr = employees.sort(function(a, b){
                 var y = a[dataType];
                 var x = b[dataType];
@@ -28,7 +50,11 @@ class Table extends Component {
                 if (x > y) {return 1;}
                 return 0;
               });
-          this.setState({sortedArr});
+              this.setState({
+                employees: sortedArr,
+                sortColumn: dataType,
+                sortColumnId: event.target.id
+              });
           event.target.setAttribute('sort', 'asc');
         }
  
@@ -37,23 +63,23 @@ class Table extends Component {
     render() {
         return (
             <table className="table">
-                <thead>
+                <thead id="tableHeader">
                     <tr>
                     <th>
                         </th>
-                        <th onClick={this.sortEmployees} sort="asc" data-type="name">
+                        <th id="name" onClick={this.sortEmployees} sort="asc" data-type="name">
                             Employee Name
                         </th>
-                        <th onClick={this.sortEmployees} sort="asc" data-type="occupation">
+                        <th id="occupation" onClick={this.sortEmployees} sort="asc" data-type="occupation">
                             Occupation
                         </th>
-                        <th onClick={this.sortEmployees} sort="asc" data-type="email">
+                        <th id="email" onClick={this.sortEmployees} sort="asc" data-type="email">
                             Email
                         </th>
-                        <th onClick={this.sortEmployees} sort="asc" data-type="phone">
+                        <th >
                             Phone
                         </th>
-                        <th onClick={this.sortEmployees} sort="asc" data-type="dob">
+                        <th id="dob" onClick={this.sortEmployees} sort="asc" data-type="dob">
                             DOB
                         </th>
                     </tr>

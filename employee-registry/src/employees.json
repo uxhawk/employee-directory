@@ -106,12 +106,14 @@
     "email": "captain@gmail.com",
     "image": "http://vignette2.wikia.nocookie.net/dragon-rap-battles/images/b/b6/Captain_Planet.png/revision/latest?cb=20160911200836",
     "occupation": "Superhero",
-    "location": "Earth"
+    "location": "Earth",
+    "dob": "11-11-2000"
   },
   {
     "id": 12,
     "name": "Ickis",
     "phone": "(412) 867-5309",
+    "dob": "12-12-2000",
     "email": "ickis@gmail.com",
     "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
     "occupation": "Ahhhh! A Real Monster!",
