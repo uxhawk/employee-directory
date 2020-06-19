@@ -6,11 +6,14 @@ class Table extends Component {
         employees    
     };
 
-    sortName = (event) => {
-        if (event.target.getAttribute('sort') === 'asc') {
+    sortEmployees = (event) => {
+        const dataType = event.target.getAttribute('data-type');
+        const sortType = event.target.getAttribute('sort');
+
+        if (sortType === 'asc') {
             const sortedArr = employees.sort(function(a, b){
-                var x = a.dob;
-                var y = b.dob;
+                var x = a[dataType];
+                var y = b[dataType];
                 if (x < y) {return -1;}
                 if (x > y) {return 1;}
                 return 0;
@@ -19,8 +22,8 @@ class Table extends Component {
           event.target.setAttribute('sort', 'desc');
         } else {
             const sortedArr = employees.sort(function(a, b){
-                var y = a.dob;
-                var x = b.dob;
+                var y = a[dataType];
+                var x = b[dataType];
                 if (x < y) {return -1;}
                 if (x > y) {return 1;}
                 return 0;
@@ -38,19 +41,19 @@ class Table extends Component {
                     <tr>
                     <th>
                         </th>
-                        <th onClick={this.sortName} sort="asc">
+                        <th onClick={this.sortEmployees} sort="asc" data-type="name">
                             Employee Name
                         </th>
-                        <th>
+                        <th onClick={this.sortEmployees} sort="asc" data-type="occupation">
                             Occupation
                         </th>
-                        <th>
-                            Phone
-                        </th>
-                        <th>
+                        <th onClick={this.sortEmployees} sort="asc" data-type="email">
                             Email
                         </th>
-                        <th onClick={this.sortName} sort="asc">
+                        <th onClick={this.sortEmployees} sort="asc" data-type="phone">
+                            Phone
+                        </th>
+                        <th onClick={this.sortEmployees} sort="asc" data-type="dob">
                             DOB
                         </th>
                     </tr>
