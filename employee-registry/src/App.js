@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Jumbotron from './components/Jumbotron';
 import Search from './components/Search';
 import Table from './components/Table';
-import data from './employees.json';
+// eslint-disable-next-line
 import styles from './App.css';
 
-class App extends Component {
-  render() {
+function App(){
     return (
       <div>
         <Jumbotron />
         <Search />
-        <Table data={data}/>
+        <Table />
       </div>
     );
-  }
 }
 
 export default App;
