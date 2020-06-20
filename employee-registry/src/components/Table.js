@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import employees from '../employees.json';
 
 class Table extends Component {
-    state = {
-        employees: employees,
-        sortColumn: '',
-        sortColumnId: '',
-    };
+    // state = {
+    //     employees: employees,
+    //     sortColumn: '',
+    //     sortColumnId: '',
+    // };
 
     sortEmployees = (event) => {
         const dataType = event.target.getAttribute('data-type');
