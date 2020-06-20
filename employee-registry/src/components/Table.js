@@ -103,7 +103,7 @@ class Table extends Component {
                             <th id="email" onClick={this.sortEmployees} sort="asc" data-type="email">
                                 Email
                             </th>
-                            <th >
+                            <th id="phone" onClick={this.sortEmployees} sort="asc" data-type="phone">
                                 Phone
                             </th>
                             <th id="dob" onClick={this.sortEmployees} sort="asc" data-type="dob">
